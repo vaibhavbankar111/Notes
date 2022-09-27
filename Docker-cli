@@ -1,0 +1,8 @@
+docker (cli- commands) new version
+docker --help //for different modules availble
+docker container run ubuntu //for create container of ubuntu 
+docker container ls
+docker container ls -a 
+docker container rm
+docker container start <container id>
+docker container stop <container id>

@@ -15,6 +15,6 @@ docker container run -it ubuntu /bin/bash <it will allow us to access container 
 exit or cntrl+d to exit from container but the container will stop from running
 cntrl+pq to stey remain container to be in running condition in background
 (docker container ls -aq) it will show id of all containers
-docker container rm (docker container ls -aq) it will delete all the containers
+docker container rm $(docker container ls -aq) it will delete all the containers
 
 

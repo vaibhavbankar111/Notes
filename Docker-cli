@@ -34,6 +34,10 @@ run container ip in browser it will generate logs in fg
 docker container kill <container-id> to kill container forcefully
 docker container stop <container-id> to stop container normally
 docker container wait <container-id> it will wait until container is stopped once it stopped it will show the output
+docker container pause <container-id> it will pause the container 
+docker container unpause <container-id> it will resume the container
+docker container prune it will delete all the stopped container
+docker container port <container-id> it will show the port mapping info
 
 
 

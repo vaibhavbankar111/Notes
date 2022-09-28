@@ -17,7 +17,11 @@ cntrl+pq to stey remain container to be in running condition in background
 (docker container ls -aq) it will show id of all containers
 docker container rm $(docker container ls -aq) it will delete all stopped containers running containers need to be stopped first
 docker container inspect <container id> it will show all the information and configuration of the contianer 
-docker container logs <contaier id of nginx server>
+docker container logs <contaier id of nginx server> to check logs of nginx server
+docker container top <container id> to check running processes in nginx server
+ps -aux to see all processes in your machine
+docker container stats <to see the stats of container >
+
 
 
 

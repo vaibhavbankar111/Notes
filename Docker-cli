@@ -5,10 +5,10 @@ docker container ls <it will show list of running containers>
 docker network ls <it will show the networks>
 docker container run ubuntu(image name) <commnad that your want to run > #<if image is not available docker will download image from dockerhub and create container into your machine>
 docker container ls -a <it will show all the running and non running containers>
-docker container run fedora sleep 30 it will show till 30 sec in running after that container will close
-docker container rm <container id>
-docker container start <container id>
-docker container stop <container id>
+docker container run fedora sleep 30 <it will show till 30 sec in running after that container will close>
+docker container rm <container id> it will remove non running container 
+docker container start <container id> it will start a stopped contianer
+docker container stop <container id> it will stop running container
 docker container run -d ubuntu sleep 30 <it will run ubuntu container and send it to background -d (detach) and not freeze the terminal)
 docker images --all <it will show the all images availble in local repo>
 

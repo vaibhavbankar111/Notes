@@ -24,7 +24,11 @@ docker container stats <to see the stats of container >
 +++to access nginx server from other vm or machine we need to do port forwarding+++
 docker engine 7770 pe jo bhi req aaye xyz(container):80 pe bhej de
 docker container run -d(detach) -p(port) 7770:80 --name(name of container) nginx 
+netstat -nltp <to check open ports>
 <public ip of ec2 instance:7770>
+docker container exec -it <contaier-id> /bin/bash to access the shell of container
+docker container rename <container-id> new name to rename container name
+
 
 
 

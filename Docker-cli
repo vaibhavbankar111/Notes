@@ -28,7 +28,7 @@ netstat -nltp <to check open ports>
 <public ip of ec2 instance:7770>
 docker container exec -it <contaier-id> /bin/bash to access the shell of container
 docker container rename <container-id> new name to rename container name
-
+docker container restart <container-id> to restart the container
 
 
 

@@ -12,4 +12,7 @@ docker container stop <container id> it will stop running container
 docker container run -d ubuntu sleep 30 <it will run ubuntu container and send it to background -d (detach) and not freeze the terminal)
 docker images --all <it will show the all images availble in local repo>
 docker container run -it ubuntu /bin/bash <it will allow us to access container (it interactive tty) >
+exit or cntrl+d to exit from container but the container will stop from running
+cntrl+pq to stey remain container to be in running condition 
+
 

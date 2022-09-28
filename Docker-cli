@@ -21,6 +21,8 @@ docker container logs <contaier id of nginx server> to check logs of nginx serve
 docker container top <container id> to check running processes in nginx server
 ps -aux to see all processes in your machine
 docker container stats <to see the stats of container >
++++to access nginx server from other vm or machine we need to do port forwarding+++
+docker engine 7770 pe jo bhi req aaye xyz(container):80 pe bhej de
 
 
 

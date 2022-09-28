@@ -13,6 +13,8 @@ docker container run -d ubuntu sleep 30 <it will run ubuntu container and send i
 docker images --all <it will show the all images availble in local repo>
 docker container run -it ubuntu /bin/bash <it will allow us to access container (it interactive tty) >
 exit or cntrl+d to exit from container but the container will stop from running
-cntrl+pq to stey remain container to be in running condition 
+cntrl+pq to stey remain container to be in running condition in background
+(docker container ls -aq) it will show id of all containers
+docker container rm (docker container ls -aq) it will delete all the containers
 
 

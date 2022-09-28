@@ -29,6 +29,12 @@ netstat -nltp <to check open ports>
 docker container exec -it <contaier-id> /bin/bash to access the shell of container
 docker container rename <container-id> new name to rename container name
 docker container restart <container-id> to restart the container
+docker container attach <container-id> to bring our container from backgroud to foreground
+run container ip in browser it will generate logs in fg
+docker container kill <container-id> to kill container forcefully
+docker container stop <container-id> to stop container normally
+docker container wait <container-id> it will wait until container is stopped once it stopped it will show the output
+
 
 
 

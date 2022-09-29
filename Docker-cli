@@ -62,6 +62,8 @@ docker pull ubuntu:<tag or old version name> it will pull ubuntu image based on 
 docker image tag <hackeros image name> hub.docker.com/hackerboypk/<hackerbos new image name> this will set tag with our dockerhub repo
 docker push <reponame/tag> it will push your docker image to docker hub 
 docker login enter username password and login to dockerhub
+docker pull hackerboypk/hackerbos:latest it will pull image from dockerhub syntax is given in dockerhub image path
+==================================================================================================================
 
 
 

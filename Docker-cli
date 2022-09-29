@@ -52,7 +52,16 @@ docker container export <container-id -o pk.zip <this will export our container 
 ls -lh it will show the information of export file size etc
 docker image import <zipfilename> <image name> it will import the docker image
 docker image ls it will show the all docker images
-
+===============================================================================================================
+Create docker image from running Container
+docker container commit --author<"authorname"> -m <"your message"> <container-id> <new image name>
+===============================================================================================================
+Docker hub
+docker pull ubuntu <it will pull ubuntu image from dockerhub>
+docker pull ubuntu:<tag or old version name> it will pull ubuntu image based on tag or old version
+docker image tag <hackeros image name> hub.docker.com/hackerboypk/<hackerbos new image name> this will set tag with our dockerhub repo
+docker push <reponame/tag> it will push your docker image to docker hub 
+docker login enter username password and login to dockerhub
 
 
 

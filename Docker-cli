@@ -72,6 +72,16 @@ docker image rm <image name > will remove the images from local repo
 docker image rm -f <image name > it will remove the image forcefully from the repo
 docker image ls and docker images are equal 
 docker image inspect <image name> it will inspect the image 
+docker image prune it will remove all the unused images from the local repo
+=====================================================================================================================
+Docker image save and docker image load
+docker image save <image name> >image name.zip or .tar it will save image and standard output will save in .tar format
+docker image load > <image name.tar> it will load image from tar file
+docker image save vs docker container export
+=========================================================================================================================
+Dockerfile and layered Architecture
+
+
 
 
 

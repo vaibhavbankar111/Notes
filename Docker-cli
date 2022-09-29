@@ -38,6 +38,15 @@ docker container pause <container-id> it will pause the container
 docker container unpause <container-id> it will resume the container
 docker container prune it will delete all the stopped container
 docker container port <container-id> it will show the port mapping info
+============================================================================================================
+Create Command
+docker container create ubuntu sleep 30 <it will create container of ubuntu with command sleep30>
+docker create command can download image from git hub and create container but not start the container command sleep30 will not execute until manually start by us 
+docker container diff <container id> it will show the changes in file system of container ( c-create d-delete a-add )
+watch 'docker container diff <container id>' <it will watch the co ntainer every two seconds and logs the chenges in container file system
+docker container cp <source-file> <container id:/destination-file> it will allow to copy file from docker engine to any container with the help of cp cmd
+
+
 
 
 

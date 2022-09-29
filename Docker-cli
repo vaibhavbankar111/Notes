@@ -80,6 +80,12 @@ docker image load > <image name.tar> it will load image from tar file
 docker image save vs docker container export
 =========================================================================================================================
 Dockerfile and layered Architecture
+vi Dockerfile
+docker image build -t <myubuntu image name>:<1 tag> . (dot) means currant working directory of dockerfile
+vi Dockerfile contains the configuration of image to be build commands like run and more refer docs 
+==========================================================================================================================
+
+
 
 
 

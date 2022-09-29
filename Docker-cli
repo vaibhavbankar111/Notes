@@ -64,6 +64,16 @@ docker push <reponame/tag> it will push your docker image to docker hub
 docker login enter username password and login to dockerhub
 docker pull hackerboypk/hackerbos:latest it will pull image from dockerhub syntax is given in dockerhub image path
 ==================================================================================================================
+Docker image commands
+docker image ls it will list all the images in local repo
+docker image ls --format '{{.ID}},{{.Repository}}' it will show in desired format listing of docker image more foramt listed on docs
+docker image history <docker image name> it will disply the history of docker image
+docker image rm <image name > will remove the images from local repo
+docker image rm -f <image name > it will remove the image forcefully from the repo
+docker image ls and docker images are equal 
+docker image inspect <image name> it will inspect the image 
+
+
 
 
 

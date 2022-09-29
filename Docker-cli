@@ -45,6 +45,16 @@ docker create command can download image from git hub and create container but n
 docker container diff <container id> it will show the changes in file system of container ( c-create d-delete a-add )
 watch 'docker container diff <container id>' <it will watch the co ntainer every two seconds and logs the chenges in container file system
 docker container cp <source-file> <container id:/destination-file> it will allow to copy file from docker engine to any container with the help of cp cmd
+===============================================================================================================
+Docker Container Export/Import
+docker container export <container-id>pk.zip <alternate way below>
+docker container export <container-id -o pk.zip <this will export our container in tar,zip,rar format>
+ls -lh it will show the information of export file size etc
+docker image import <zipfilename> <image name> it will import the docker image
+docker image ls it will show the all docker images
+
+
+
 
 
 

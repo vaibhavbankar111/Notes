@@ -86,6 +86,18 @@ docker container run -it build:5 example to run build
 whenever you need to modify docker file try to modify lower side rather than upper side to save time to build
 vi Dockerfile contains the configuration of image to be build commands like run and more refer docs 
 ==========================================================================================================================
+Dockerfile 
+LABEL, RUN, ENV, WORKDIR docs availble
+==========================================================================================================================
+Dockerfile
+ADD COPY USER 
+RUN useradd -d /home/pk -g root -G sudo -m -p $(echo "PASS" | openssl passwd -1 -stdin) $NAME
+this will add user in image dockerfile
+USER $NAME it will swith user according to environment variable name
+COPY <source file local> <destination image path>
+ADD <source file local> <destination image path>
+diff bet copy & add h.w
+
 
 
 

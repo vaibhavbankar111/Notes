@@ -54,7 +54,7 @@ docker image import <zipfilename> <image name> it will import the docker image
 docker image ls it will show the all docker images
 ===============================================================================================================
 Create docker image from running Container
-docker container commit --author<"authorname"> -m <"your message"> <container-id> <new image name>
+docker container commit --author<"authorname"> -m <"your message"> <container-id> <new image name> it will create docker image from running container
 ===============================================================================================================
 Docker hub
 docker pull ubuntu <it will pull ubuntu image from dockerhub>
@@ -80,8 +80,10 @@ docker image load > <image name.tar> it will load image from tar file
 docker image save vs docker container export
 =========================================================================================================================
 Dockerfile and layered Architecture
-vi Dockerfile
+vi Dockerfile <name of the file must be Dockerfile by default docker build commnad will search with name Dockerfile>
 docker image build -t <myubuntu image name>:<1 tag> . (dot) means currant working directory of dockerfile
+docker container run -it build:5 example to run build
+whenever you need to modify docker file try to modify lower side rather than upper side to save time to build
 vi Dockerfile contains the configuration of image to be build commands like run and more refer docs 
 ==========================================================================================================================
 

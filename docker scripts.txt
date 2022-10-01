@@ -6,7 +6,7 @@ ENV NAME pk
 ENV PASS pass@123
 RUN apt install python -y && apt install openssh-server -y
 RUN mkdir -p /var/run/sshd
-RUN useradd -d /home/pk -g root -G sudo -m -p $(echo "PASS" | openssl passwd -1 -stdin) $NAME
+RUN useradd -d /home/pk -g root -G sudo -m -p $(echo "$PASS" | openssl passwd -1 -stdin) $NAME
 CMD ["/usr/sbin/sshd", "-D"]
 #RUN whoami >aaa.txt
 #USER $NAME

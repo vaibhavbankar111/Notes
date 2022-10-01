@@ -102,6 +102,8 @@ CMD start docker contaner by python shell
 in docker file add CMD ["python"]
 ==============================================================================================================================
 Entrypoint
+ENTRYPOINT [""] SYNTAX of entrypoint 
+
 
 
 

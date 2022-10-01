@@ -101,6 +101,7 @@ diff bet copy & add h.w
 CMD start docker contaner by python shell
 in docker file add CMD ["python"]
 ==============================================================================================================================
+Entrypoint
 
 
 

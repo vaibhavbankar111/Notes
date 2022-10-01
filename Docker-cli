@@ -97,6 +97,10 @@ USER $NAME it will swith user according to environment variable name
 COPY <source file local> <destination image path>
 ADD <source file local> <destination image path>
 diff bet copy & add h.w
+=============================================================================================================================
+CMD start docker contaner by python shell
+in docker file add CMD ["python"]
+==============================================================================================================================
 
 
 

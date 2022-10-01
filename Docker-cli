@@ -103,7 +103,10 @@ in docker file add CMD ["python"]
 ==============================================================================================================================
 Entrypoint
 ENTRYPOINT [""] SYNTAX of entrypoint 
-
+write more info about entrypoint 
+diff entrypoint vs cmd
+use case and real life scenarios R & D
+==============================================================================================================================
 
 
 

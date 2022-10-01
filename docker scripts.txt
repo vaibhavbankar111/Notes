@@ -26,4 +26,17 @@ CMD ["/usr/sbin/sshd", "-D"]
 #EXPOSE 80/tcp
 #CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 #================================================
+SSH
+FROM ubuntu:18.04
+RUN apt update
+#LABEL name="pk"
+#LABEL password="pk"
+ENV NAME pk
+ENV PASS pass@123
+RUN apt install python -y && apt install openssh-server -y
+RUN mkdir -p /var/run/sshd
+EXPOSE 22
+RUN useradd -d /home/pk -g root -G sudo -m -p $(echo "$PASS" | openssl passwd -1 -stdin) $NAME
+CMD ["/usr/sbin/sshd", "-D"]
+=====================================================
 

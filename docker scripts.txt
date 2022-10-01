@@ -1,0 +1,29 @@
+FROM ubuntu:18.04
+RUN apt update
+#LABEL name="pk"
+#LABEL password="pk"
+ENV NAME pk
+ENV PASS pass@123
+RUN apt install python -y && apt install openssh-server -y
+RUN mkdir -p /var/run/sshd
+RUN useradd -d /home/pk -g root -G sudo -m -p $(echo "PASS" | openssl passwd -1 -stdin) $NAME
+CMD ["/usr/sbin/sshd", "-D"]
+#RUN whoami >aaa.txt
+#USER $NAME
+#RUN whoami > /home/pk/dj.txt
+#RUN mkdir -p /tmp/project
+#COPY projectfile /tmp/project/
+#ADD pk.zip /tmp/project/
+#CMD ["python"]
+#================================================
+#RUN apt update && apt install apache2 -y && apt install apache2-utils -y
+#RUN echo "hello World" >/var/www/html/index.html
+#EXPOSE 80
+#CMD ["apache2ctl", "-D", "FOREGROUND"]
+#=============================================
+#RUN apt update && apt install nginx -y && apt install curl -y && apt install lynx -y
+#COPY default /etc/nginx/sites-available/default
+#EXPOSE 80/tcp
+#CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+#================================================
+

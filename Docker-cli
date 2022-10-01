@@ -107,6 +107,13 @@ write more info about entrypoint
 diff entrypoint vs cmd
 use case and real life scenarios R & D
 ==============================================================================================================================
+Docker Volume
+volume 
+bind mount
+tmpfs ram me store karta hai hdd me nahi host machine ke
+docker container run --name<container name> -e MYSQL_ROOT_PASSWORD=<password of mysql> -d <mysql image name:tag tag is version of mysql> with password
+
+docker container run --name<container name> -e MYSQL_ALLOW_EMPTY_PASSWORD=<password of mysql> -d <mysql image name:tag tag is version of mysql> without password
 
 
 

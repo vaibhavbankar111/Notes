@@ -114,7 +114,19 @@ tmpfs ram me store karta hai hdd me nahi host machine ke
 docker container run --name<container name> -e MYSQL_ROOT_PASSWORD=<password of mysql> -d <mysql image name:tag tag is version of mysql> with password
 
 docker container run --name<container name> -e MYSQL_ALLOW_EMPTY_PASSWORD=<password of mysql> -d <mysql image name:tag tag is version of mysql> without password
-
+=============================================================================================================================
+docker container run -d --name pkmysql -v abc:/var/lib/mysql -e ALLOW_EMPTY_PASSWORD=true mysql 
+<this command will create abc volume and it will mount in /var/lib/mysql
+docker volume ls
+===========================================================================================================================
+docker volume create, ls, inspect,rm,prune
+docker volume create <volume name> it will create volume of perticular name
+docker volume ls it will list all available volumes
+docker volume inspect <volume name> it will inspect perticular volume
+docker volume rm <volume name> it will delete particular volume
+docker volume prune it will delete all unused volumes
+============================================================================================================================
+Docker bind mount
 
 
 

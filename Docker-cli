@@ -134,7 +134,12 @@ docker container run -it -v  $(pwd):/tmp/test ubuntu bash
 another way 
 docker container run -it --mount type=bind,source=$(pwd),target=/tmp/ ubuntu bash
 =========================================================================================================================
-
+Docker networking
+docker network ls
+docker network inspect
+bridge network overviw
+========================================================================================================================
+Bridge Network
 
 
 

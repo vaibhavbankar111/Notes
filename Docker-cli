@@ -127,6 +127,14 @@ docker volume rm <volume name> it will delete particular volume
 docker volume prune it will delete all unused volumes
 ============================================================================================================================
 Docker bind mount
+docker container run -it -v /home/root/bind:/tmp/test ubuntu bash 
+it will mount all the content of bind folder to tmp/test folder inside container
+if you want to mound your current location then you can use $(pwd)
+docker container run -it -v  $(pwd):/tmp/test ubuntu bash 
+another way 
+docker container run -it --mount type=bind,source=$(pwd),target=/tmp/ ubuntu bash
+=========================================================================================================================
+
 
 
 

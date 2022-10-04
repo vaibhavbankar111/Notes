@@ -140,6 +140,10 @@ docker network inspect
 bridge network overviw
 ========================================================================================================================
 Bridge Network
+docker network create --help 
+docker network create -d<driver> bridge <name of n>w test>
+docker container run -it --network test ubuntu bash
+
 
 
 

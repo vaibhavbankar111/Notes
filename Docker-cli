@@ -160,10 +160,14 @@ connect     Connect a container to a network
   prune       Remove all unused networks
   rm          Remove one or more network
   ============================================================================================================================
-
-
-
-
+Docker Registry
+docker container run -d -p 5000:5000 --name myreg registry
+curl 127.0.0.1:5000/v2/_catalog
+{"repositories":[]} registry image contains no registry
+push images into docker registry
+docker image tag ubuntu 127.0.0.1:5000/ubuntuok
+docker image push 127.0.0.1:5000/ubuntuok
+curl localhost:5000/v2/_catalog
 
 
 

@@ -143,7 +143,23 @@ Bridge Network
 docker network create --help 
 docker network create -d<driver> bridge <name of n>w test>
 docker container run -it --network test ubuntu bash
+============================================================================================================================
+Docker network connect disconnect
+docker container connect <network name> <contianer id > it will connect particular containr to specific network
+docker container disconnect <network name> <contianer id >it will disconnect particular container from network
+========================================================================================================================
+docker network rm <network name> Remove one or more networks
+docker network prune Remove all unused networks
 
+
+connect     Connect a container to a network
+  create      Create a network
+  disconnect  Disconnect a container from a network
+  inspect     Display detailed information on one or more networks
+  ls          List networks
+  prune       Remove all unused networks
+  rm          Remove one or more network
+  ============================================================================================================================
 
 
 

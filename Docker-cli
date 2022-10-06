@@ -235,6 +235,21 @@ docker container run -d \ -p 5000:5000 \ --name registry_basic \ -v "$(pwd)" /au
 -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
 registry
 enter now container will run
+docker container ls
+docker image ls
+docker image push repo.docker.local:5000/mariadb_local
+it will give error that no basic auth credentials
+docker login repo.docker.local:5000
+username:- pawan
+password :- pass123
+login success
+docker image push repo.docker.local:5000/mariadb_local
+push success
+===============================================================================================================================================================
+assignment
+
+
+  
 
 
 

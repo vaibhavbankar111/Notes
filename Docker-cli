@@ -168,6 +168,11 @@ push images into docker registry
 docker image tag ubuntu 127.0.0.1:5000/ubuntuok
 docker image push 127.0.0.1:5000/ubuntuok
 curl localhost:5000/v2/_catalog
+if we need to download image from our local server
+docker image pull 127.0.0.1:5000/<image name> even if internet is off it will download from local repo but bydefault it download from docker.io
+docker only allow secure registry with https but in this case docker allow only registry from cidr 127.0.0.0/8 this is exception
+
+
 
 
 

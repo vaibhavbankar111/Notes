@@ -172,14 +172,17 @@ if we need to download image from our local server
 docker image pull 127.0.0.1:5000/<image name> even if internet is off it will download from local repo but bydefault it download from docker.io
 docker only allow secure registry with https but in this case docker allow only registry from cidr 127.0.0.0/8 this is exception
 if you want to run on insecure registry anyway so you need to create file
-vim demon.json
+vim daemon.json
 {
 "insecure-registries" :["reposerverip:5000"]
 }
-and move file to mv demon.json etc/docker/
+and move file to mv daemon.json etc/docker/
 service docker restart
 =====================================================================================================================================
-
+Docker Registry (Secure)
+first remove all the unsecure docker repository
+cd /etc/docker/
+rm -rf daemon.json
 
 
 

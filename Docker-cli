@@ -216,7 +216,25 @@ add line
 <ip> repo.docker.local save and quit :wq
 now run the command docker image push repo.docker.local:5000/mariadb_local
 now its working pushing the image
-
+===================================================================================================================================================================
+Basic Registry authentication Docker Registry with auth
+mkdir auth
+docker container run --entrypoint htpasswd registry -bnB pawan pass123 >auth/htpasswd
+-b run in batch mode
+n output will be displayed
+B bcrypt 
+pawan username
+pass123 password
+cat auth/htpasswd
+username : encrypted passsword
+now run a container
+docker container run -d \ -p 5000:5000 \ --name registry_basic \ -v "$(pwd)" /auth:/auth \ -v "$(pwd)" /certs:/certs \ 
+-e "REGISTRY_AUTH=HTPASSWD" \ -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
+-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
+-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
+-e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
+registry
+enter now container will run
 
 
 

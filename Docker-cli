@@ -201,7 +201,7 @@ cd
 cp certs/domain.crt /etc/docker/certs.d/repo.docker.local\:5000/ca.crt
 service docker restart
 to run registry type this command
-docker container run -d -p 5000:5000 --name secure_registry -v $(pwd)/certs/:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt/ -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry
+docker container run -d -p 5000:5000 --name secure_registry -v $(pwd)/certs/:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry
 enter
 container running now
 push any image on server

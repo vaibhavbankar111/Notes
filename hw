@@ -28,3 +28,17 @@ of any developer changes from the repository to the production.
 Continuous Deployment ensures that any change that passes through the stages of production is released to the end-users.
 There is absolutely no way other than any failure in the test that may stop the deployment of new changes to the output. 
 This step is a great way to speed up the feedback loop with customers and is free from human intervention. 
+
+Difference between web server and application server:
+Web Server >>>>>>                                                           Application server>>>
+
+Web server encompasses web container only.                            While application server encompasses Web container as well as EJB container.
+Web server is useful or fitted for static content.                    Whereas application server is fitted for dynamic content. 
+Web server consumes or utilizes less resources.                       While application server utilize more resources.
+We	In web servers, multithreading is supported.b servers             While application servers arrange the run environment for enterprises applications.
+arrange the run environment for web applications.                     While in application server, multithreading is not supported.
+Web server’s capacity is lower than application server.               While application server’s capacity is higher than web server.
+In web server, HTML and HTTP protocols are used.                      Processes that are resource-intensive  are supported.
+Web Server examples are Apache HTTP Server , Nginx.                   Application Servers example are JBoss , Glassfish.
+
+

@@ -1,12 +1,14 @@
-What is Continuous Integration?>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+================================================================================================================================
+What is Continuous Integration?
 
 Continuous Integration (CI) is a DevOps software development practice that enables the developers 
 to merge their code changes in the central repository. That way, automated builds and tests can be run.
 The amendments by the developers are validated by creating a built and running an automated test against them. 
 In the case of Continuous Integration, a tremendous amount of emphasis is placed on testing automation to 
 check on the application. This is to know if it is broken whenever new commits are integrated into the main branch.
+===================================================================================================================================================
 
-What is Continuous Delivery?>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What is Continuous Delivery?
 
 Continuous Delivery (CD) is a DevOps practice that refers to the building, testing, and delivering improvements
 to the software code. The phase is referred to as the extension of the Continuous Integration phase to make sure
@@ -18,8 +20,9 @@ deployment can occur at any time with just one click of a button.
 Continuous Delivery gives you the power to decide whether to make the releases daily, weekly,
 or whenever the business requires it. The maximum benefits of Continuous Delivery can only be yielded 
 if they release small batches, which are easy to troubleshoot if any glitch occurs.
+==========================================================================================================================================
 
-What is Continuous Deployment?>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What is Continuous Deployment?
 
 When the step of Continuous Delivery is extended, it results in the phase of Continuous Deployment.
 Continuous Deployment (CD) is the final stage in the pipeline that refers to the automatic releasing 
@@ -28,9 +31,11 @@ of any developer changes from the repository to the production.
 Continuous Deployment ensures that any change that passes through the stages of production is released to the end-users.
 There is absolutely no way other than any failure in the test that may stop the deployment of new changes to the output. 
 This step is a great way to speed up the feedback loop with customers and is free from human intervention. 
+==============================================================================================================================================
 
 Difference between web server and application server:
-Web Server >>>>>>                                                           Application server>>>
+
+Web Server >>>>>>                                                           Application server >>>
 
 Web server encompasses web container only.                            While application server encompasses Web container as well as EJB container.
 Web server is useful or fitted for static content.                    Whereas application server is fitted for dynamic content. 
@@ -40,8 +45,9 @@ arrange the run environment for web applications.                     While in a
 Web server’s capacity is lower than application server.               While application server’s capacity is higher than web server.
 In web server, HTML and HTTP protocols are used.                      Processes that are resource-intensive  are supported.
 Web Server examples are Apache HTTP Server , Nginx.                   Application Servers example are JBoss , Glassfish.
+========================================================================================================================================
 
-Virtualization in Cloud Computing
+Virtualization in Cloud Computing 
 
 Virtualization is the "creation of a virtual (rather than actual) version of something,
 such as a server, a desktop, a storage device, an operating system or network resources".
@@ -50,5 +56,16 @@ In other words, Virtualization is a technique, which allows to share a single ph
 instance of a resource or an application among multiple customers and organizations.
 It does by assigning a logical name to a physical storage and providing a pointer to
 that physical resource when demanded.
+=================================================================================================================
 
+Monolithic architecture >>>>>                                 Microservices architecture >>>>>
 
+1. Monolithic architecture is built as                       1. Microservices architecture is built as small independent module based                      
+   one large system and is usually one code-base.               on business functionality.
+2. It is not easy to scale based on demand                   2. It is easy to scale based on demand.
+3. It has shared database                                    3. Each project and module has their own database
+4. Large code base makes IDE slow and build                  4. Each project is independent and small in size. So overall build and 
+  time gets increase.                                           development time gets decrease.
+5. It extremely difficult to change technology or            5. Easy to change technology or framework because every module and project is independent
+   language or framework because everything is tightly 
+   coupled and depend on each other.

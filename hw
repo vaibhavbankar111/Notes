@@ -41,4 +41,14 @@ Web server’s capacity is lower than application server.               While ap
 In web server, HTML and HTTP protocols are used.                      Processes that are resource-intensive  are supported.
 Web Server examples are Apache HTTP Server , Nginx.                   Application Servers example are JBoss , Glassfish.
 
+Virtualization in Cloud Computing
+
+Virtualization is the "creation of a virtual (rather than actual) version of something,
+such as a server, a desktop, a storage device, an operating system or network resources".
+
+In other words, Virtualization is a technique, which allows to share a single physical
+instance of a resource or an application among multiple customers and organizations.
+It does by assigning a logical name to a physical storage and providing a pointer to
+that physical resource when demanded.
+
 

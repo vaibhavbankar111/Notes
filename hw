@@ -1,0 +1,20 @@
+What is Continuous Integration?
+
+Continuous Integration (CI) is a DevOps software development practice that enables the developers 
+to merge their code changes in the central repository. That way, automated builds and tests can be run.
+The amendments by the developers are validated by creating a built and running an automated test against them. 
+In the case of Continuous Integration, a tremendous amount of emphasis is placed on testing automation to 
+check on the application. This is to know if it is broken whenever new commits are integrated into the main branch.
+
+What is Continuous Delivery?
+
+Continuous Delivery (CD) is a DevOps practice that refers to the building, testing, and delivering improvements
+to the software code. The phase is referred to as the extension of the Continuous Integration phase to make sure
+that new changes can be released to the customers quickly in a substantial manner. 
+
+This can be simplified as, though you have automated testing, the release process is also automated, and any 
+deployment can occur at any time with just one click of a button.
+
+Continuous Delivery gives you the power to decide whether to make the releases daily, weekly,
+or whenever the business requires it. The maximum benefits of Continuous Delivery can only be yielded 
+if they release small batches, which are easy to troubleshoot if any glitch occurs.

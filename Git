@@ -13,4 +13,24 @@ with many Git users. Feature branches provide an isolated environment
 for every change to your codebase.
 =============================================================================
 Installing Git
+Debian/Ubuntu
+For the latest stable version for your release of Debian/Ubuntu
+
+# apt-get install git
+For Ubuntu, this PPA provides the latest stable upstream Git version
+
+# add-apt-repository ppa:git-core/ppa # apt update; apt install git
+===========================================================================
+git init >it will initiate empty git repo to that particular dir or folder
+.git dir will made 
+git status > information about branch how many commits you made how many tracked or untracked files are done 
+git status commnd should be run inside the initilised folder only
+git checkout -b dev it will create new branch dev
+git checkout -b master it will switched to master branch 
+branch :- A branch represents an independent line of development.
+Branches serve as an abstraction for the edit/stage/commit process.
+You can think of them as a way to request a brand new working directory,
+staging area, and project history.
+
+
 

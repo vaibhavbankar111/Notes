@@ -18,7 +18,7 @@ with many Git users. Feature branches provide an isolated environment
 for every change to your codebase.
 features of git 
 1 system compatibility 2. collaboration 3.speed 4.distributed system 5.relibility 6. security
-git lifecycle assign working directory, initilization, staging, commit
+git lifecycle assign working directory, initilization, staging, commit in local system, push to github.
 =============================================================================
 Installing Git
 Debian/Ubuntu

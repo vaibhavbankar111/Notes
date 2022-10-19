@@ -1,4 +1,9 @@
-What is Git? (also called vcs- version control system) Global information tracker (Git) 
+What is Git?
+git is an open source vcs that allows the user to keep track 
+of all the changes that have been made to the source code of the software.
+(also called vcs- version control system) Global information tracker (Git) 
+introduced in 2005
+vcs examples :- code commit, git, mercurial
 Git is a DevOps tool used for source code management. 
 It is a free and open-source version control system used
 to handle small to very large projects efficiently.
@@ -11,6 +16,9 @@ Unlike centralized version control systems, Git branches are cheap
 and easy to merge. This facilitates the feature branch workflow popular
 with many Git users. Feature branches provide an isolated environment
 for every change to your codebase.
+features of git 
+1 system compatibility 2. collaboration 3.speed 4.distributed system 5.relibility 6. security
+git lifecycle assign working directory, initilization, staging, commit
 =============================================================================
 Installing Git
 Debian/Ubuntu

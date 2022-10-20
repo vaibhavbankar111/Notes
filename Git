@@ -72,6 +72,13 @@ git pull = git fetch + git merge
 4.  No possibility of merge conflicts.                                  4.  Merge conflicts are possible if the remote and the local 
                                                                             repositories have done changes at the same place.
 
+git clone is used for just downloading exactly what is currently working on the remote server repository 
+and saving it in your machine's folder where that project is placed. Mostly it is used only when we are going
+to upload the project for the first time. After that pull is the better option.
+
+git pull is a (clone(download) + merge) operation and mostly used when you are working as teamwork. 
+In other words, when you want the recent changes in that project, you can pull.
+
 
 ====================================================================================================
 

@@ -57,8 +57,22 @@ git fetch gathers any commits from the target branch that do not exist in the cu
 and stores them in your local repository. However, it does not merge them with your current branch.
 This is particularly useful if you need to keep your repository up to date, but are working on 
 something that might break if you update your files. To integrate the commits into your current branch, you must use git merge afterwards.
+
 ""GIT FETCH TELLS LOCAL REPOSITORY ABOUT CHENGES MADE IN REMOTE REPOSITORY IF WE WANT TO SAVE THE CHENGES THEN 
 WE NEED TO DO <git merge origin/master> it will update whatever changes made in remote to local repo.""
+We can see that with the help of just git pull command we directly fetched and merged our remote repository with the local repository.
+git pull = git fetch + git merge
+
+          Git Fetch                                                                     Git Pull
+1. Gives the information of a new change from a                        1. Brings the copy of all the changes from a remote repository 
+   remote repository without merging into the                             and merges them into the current branch
+   current branch.
+2. Repository data is updated in the .git directory                     2. The local repository is updated directly
+3.  Review of commits and changes can be done                           3. Updates the changes to the local repository immediately.
+4.  No possibility of merge conflicts.                                  4.  Merge conflicts are possible if the remote and the local 
+                                                                            repositories have done changes at the same place.
+
+
 ====================================================================================================
 
 

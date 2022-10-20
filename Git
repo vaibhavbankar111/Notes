@@ -29,6 +29,37 @@ For Ubuntu, this PPA provides the latest stable upstream Git version
 
 # add-apt-repository ppa:git-core/ppa # apt update; apt install git
 ===========================================================================
+diff between working dir and local repo
+The contents of your project folder (the folders and files you find within it) are represented by the working directory.
+
+The working directory is sort of like a workbench, it's where you work on your files (you edit them, you add new files, you delete files etc.).
+
+On the other hand, the .git folder (which is a hidden folder) represents the repository.
+
+Within the .git folder there are two "places" that should be mentioned, the staging area 
+(represented by the index file) and the commit history (represented by the objects folder).
+
+The staging area is sort of like a rough draft space. Whenever you are done working on a file
+(or files) in your working directory, you want to copy them to the staging area (using the git add command).
+
+Once you have all the files that you want to update in the next version of your project in the
+staging area, you are ready to save them in the next version of your project which is called a commit. You do this using the git commit command.
+
+A commit is basically a version of your project and each commit has a 40 character hash
+(40 letters and numbers) and this hash acts like a name for the commit, it's a way to refer to it.
+==============================================================================================
+git pull tries to automatically merge after fetching commits. It is context sensitive,
+so all pulled commits will be merged into your currently active branch. git pull automatically
+merges the commits without letting you review them first. If you don’t carefully
+manage your branches, you may run into frequent conflicts.
+
+git fetch gathers any commits from the target branch that do not exist in the current branch
+and stores them in your local repository. However, it does not merge them with your current branch.
+This is particularly useful if you need to keep your repository up to date, but are working on 
+something that might break if you update your files. To integrate the commits into your current branch, you must use git merge afterwards.
+====================================================================================================
+
+
 git init >it will initiate empty git repo to that particular dir or folder
 .git dir will made 
 git status > information about branch how many commits you made how many tracked or untracked files are done 

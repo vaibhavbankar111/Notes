@@ -58,7 +58,7 @@ and stores them in your local repository. However, it does not merge them with y
 This is particularly useful if you need to keep your repository up to date, but are working on 
 something that might break if you update your files. To integrate the commits into your current branch, you must use git merge afterwards.
 ""GIT FETCH TELLS LOCAL REPOSITORY ABOUT CHENGES MADE IN REMOTE REPOSITORY IF WE WANT TO SAVE THE CHENGES THEN 
-WE NEED TO DO git merge origin/master it will update whatever changes made in remote to local repo.""
+WE NEED TO DO <git merge origin/master> it will update whatever changes made in remote to local repo.""
 ====================================================================================================
 
 

@@ -100,5 +100,13 @@ rename branch
 step1 switch out to particular branch which we want to rename
 git checkout feature1
 git branch -m featureA this will rename branch feature1 to featureA
+=======================================================================
+Merging
+The git merge allows a user to merge different branches into one.
+it will create a new commit on merging.
+history of commits are not transferred.
 
-
+for merge one branch to other we need to switch to reciveing branch
+where we want our merge 
+first we need to checkout to master then
+git merge feature-A

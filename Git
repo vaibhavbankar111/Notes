@@ -93,7 +93,8 @@ branch :- A branch represents an independent line of development.
 Branches serve as an abstraction for the edit/stage/commit process.
 You can think of them as a way to request a brand new working directory,
 staging area, and project history.
-
+git branch - it shows the currant branch where we are working 
+git branch <branch name> it will create new branch
 
 
 

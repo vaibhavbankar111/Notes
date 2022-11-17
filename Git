@@ -95,6 +95,10 @@ You can think of them as a way to request a brand new working directory,
 staging area, and project history.
 git branch - it shows the currant branch where we are working 
 git branch <branch name> it will create new branch
-
+git branch -d <branch name> it will delete particular branch
+rename branch
+step1 switch out to particular branch which we want to rename
+git checkout feature1
+git branch -m featureA this will rename branch feature1 to featureA
 
 

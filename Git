@@ -110,3 +110,18 @@ for merge one branch to other we need to switch to reciveing branch
 where we want our merge 
 first we need to checkout to master then
 git merge feature-A
+========================================================================
+git merge conflicts
+two peoples pulls same code and work or change same file and merge to main then conflicts create
+lets see how to resolve that
+git mergetool -t vimdiff this will open vim editor and let us decide to choose the correct code and save them to avoid conflicts
+==========================================================================
+Git rebase
+git rebase allow us to shift set of commits and add as new base
+git rebase is same as git merge but it also bring history of commits to the current branch
+=========================================================================
+git branching strategy
+master---hotfix---relase---dev---fetures standard branching
+
+
+

@@ -71,3 +71,78 @@ When the Create First Admin User page appears, specify the details for your admi
 
 When the Jenkins is ready page appears, click Start using Jenkins.
 =============================================================================================================================================
+
+
+Jenkins can store the following types of credentials:
+
+    Secret text - a token such as an API token (e.g. a GitHub personal access token),
+
+    Username and password - which could be handled as separate components or as a colon separated string in the format username:password (read more about this in Handling credentials),
+
+    Secret file - which is essentially secret content in a file,
+
+    SSH Username with private key - an SSH public/private key pair,
+
+    Certificate - a PKCS#12 certificate file and optional password, or
+
+    Docker Host Certificate Authentication credentials.
+=============================================================================================================================================
+Declarative Pipeline fundamentals
+
+In Declarative Pipeline syntax, the pipeline block defines all the work done throughout your entire Pipeline.
+Jenkinsfile (Declarative Pipeline)
+
+pipeline {
+    agent any 
+    stages {
+        stage('Build') { 
+            steps {
+                // 
+            }
+        }
+        stage('Test') { 
+            steps {
+                // 
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                // 
+            }
+        }
+    }
+}
+
+	Execute this Pipeline or any of its stages, on any available agent.
+	Defines the "Build" stage.
+	Perform some steps related to the "Build" stage.
+	Defines the "Test" stage.
+	Perform some steps related to the "Test" stage.
+	Defines the "Deploy" stage.
+	Perform some steps related to the "Deploy" stage.
+  =================================================================================================
+  In Scripted Pipeline syntax, one or more node blocks do the core work throughout the entire Pipeline. 
+  
+Jenkinsfile (Scripted Pipeline)
+
+node {  
+    stage('Build') { 
+        // 
+    }
+    stage('Test') { 
+        // 
+    }
+    stage('Deploy') { 
+        // 
+    }
+}
+
+	Execute this Pipeline or any of its stages, on any available agent.
+	Defines the "Build" stage. stage blocks are optional in Scripted Pipeline syntax. However, implementing stage blocks in a Scripted Pipeline provides clearer visualization of each `stage’s subset of tasks/steps in the Jenkins UI.
+	Perform some steps related to the "Build" stage.
+	Defines the "Test" stage.
+	Perform some steps related to the "Test" stage.
+	Defines the "Deploy" stage.
+	Perform some steps related to the "Deploy" stage.
+  ==================================================================================================
+

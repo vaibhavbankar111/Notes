@@ -33,4 +33,41 @@ diffrence between build and run
 building a program means recompiling its modules (typically only those that have changed since the last build) and linking them together.
 running a program means executing the executable code on a machine.
 =======================================================================================================================
+What is technology stack
+A tech stack is the combination of technologies a company uses to build and run an application or project.
+Sometimes called a “solutions stack,” a tech stack typically consists of programming languages, frameworks,
+a database, front-end tools, back-end tools, and applications connected via APIs.
+Front-end 
+The front end technology stack is what users see when they interact with your application or site.
+e.g. html, css, javascript,
+
+Back-end technology stack
+
+While front end developers are concerned with the website’s presentation,
+back end web developers manage the website’s functionality. 
+They create algorithms and business logic to manipulate data and receive information from the user. 
+    Operating system.
+    The first stage of the web development process is to select the operating system where you will build a web app.
+    Linux and Windows are the most suitable operating systems to deal with.
+    
+    Web server.
+    The web server processes HTTP requests sent from the browser and then transforms HTTP responses into web pages.
+    nginx and Apache are the commonly used servers.
+    
+    Databases.
+    It’s an organized structure for storing and processing a large amount of data like figures, dates, geopositions, and so on.
+    MySQL, PostgreSQL, MongoDB, ElasticSearch, DynamoDB, Firebase Database, Indexed DB 2.0 are the examples of databases. 
+    
+    Programming language. 
+    A language that is used for writing the code. There are many different languages like PHP, Ruby, Java, C#, Python.  
+    Web development frameworks. Frameworks are tools that intensify web apps and streamline the process of code writing.
+    There are various back-end frameworks like Laravel, Yii2, Zend, Express, Nest.js.
+    ========================================================================================================
+    What is a .md file?
+.md file is a plain-text document that contains no other elements.
+The text can be formatted usingspecial inline text symbols. 
+ The “MD” in the .md file extension (also written as .markdown) stands for “Markdown documentation”. 
+ Markdown is a lightweight markup language, and each MD file is written in a particular “flavor” of Markdown.
+ ==============================================================================================================
+
 

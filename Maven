@@ -1,0 +1,21 @@
+What are build tools?
+Build tools are programs that automate the creation of executable applications from source code.
+(e.g., Maven, ms-build, ant, gradle, pybuilder, npm).
+Building incorporates compiling,linking and packaging the code into a usable or executable form.
+Basically build automation is the act of scripting or automating a wide variety of tasks that software developers do in their day-to-day activities like:
+Downloading dependencies.
+Compiling source code into binary code.
+Packaging that binary code.
+Running tests.
+Deployment to production systems.
+=======================================================================================================================
+Why do we use build tools or build automation?
+In small projects, developers will often manually invoke the build process.
+This is not practical for larger projects, where it is very hard to keep track
+of what needs to be built, in what sequence and what dependencies there are in the building process.
+Using an automation tool allows the build process to be more consistent.
+=======================================================================================================================
+C++: make, cmake, premake
+Java: ant+ivy, maven, gradle
+C#: msbuild
+

@@ -1,1 +1,71 @@
-hello
+Create s3 bucket and get it public
+install pluging 1)Build pipline , 2)maven integration ,3)s3 publisher,4)artifact manager on s3,5)amazon s3 bucket credentils
+create new item (pipline job) give name 
+pipline script select hello world 
+craete 3 stage git/build/prod
+go to pipline syntax screch git and select
+Repository url go to you github and clone it url
+add credential select ssh and pravitekey 
+go to jenkins-server type ssh-keygen
+give him pravitekey jenkins and in git hub give piblicekey
+go to genratepipline script and copy the url
+and past in the fist stage of git 
+NOW BUILD
+SECOUND STAGE BUILD BY MAVEN 
+go to manage jankins 
+go global tool configuration go down
+add maven NAME: Maven
+apply and save 
+go to job configure and add tool under agent any  EX:  agent any
+                                                      tools {
+                                                        maven 'Maven'
+                                                        }
+sh 'mvn clean package' in secound stage                                                         
+apply save 
+NOW BUILD
+3 STAGE upload workspace to s3 bucket
+go to job configuration and past the command 
+sh 'aws s3 cp $WORKSPACE/target s3://bucketname --recursive --include "*"'
+when you build you got error aws not found for that 
+go to ssh server install awscli
+apt install awscli -y
+now configure awscli for that we need a user 
+go to iam service created one user and give him premision of s3 full acces and ec2 full acces
+go to jenkins server 
+type aws configure
+AWS ACCES KEY:********
+AWS SECRECT ACCES KEY:********
+go to manage jinkins > AWS> give bucket name>customsingingregion 
+Amazon credentials >addjenkins>kind>awscredential>give acceskey and screate acceskey >apply save
+go to s3 service go to your bucket > permission >bucket police >edit >past the code /save 
+ go to iam service cerate role ec2 to s3full acces 
+ next go to ec2 service >action>security>modify iam role attch 
+ now build 
+ pipline Ex:pipeline {
+    agent any
+    tools {
+        maven 'Maven' 
+        }
+
+    stages {
+        stage('git') {
+            steps {
+                echo 'git project is cloned'
+                git credentialsId: 'ok', url: 'https://github.com/hackerboypk/OnlineShoppingApp.git'
+            }
+        }
+        stage('build') {
+            steps {
+                echo 'Hello World'
+                sh 'mvn clean package'
+                sh 'aws s3 ls'
+            }
+        }
+        stage('prod') {
+            steps {
+                echo 'Hello World'
+                sh 'aws s3 cp $WORKSPACE/target/ s3://batliwalya --recursive --include "*"'
+            }
+        }
+    }
+}

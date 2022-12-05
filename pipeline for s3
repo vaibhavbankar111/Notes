@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven' 
+        }
+
+    stages {
+        stage('git') {
+            steps {
+                echo 'git project is cloned'
+                git credentialsId: 'ok', url: 'https://github.com/hackerboypk/OnlineShoppingApp.git'
+            }
+        }
+        stage('build') {
+            steps {
+                echo 'Hello World'
+                sh 'mvn clean package'
+                sh 'aws s3 ls'
+            }
+        }
+        stage('prod') {
+            steps {
+                echo 'Hello World'
+                sh 'aws s3 cp $WORKSPACE/target/ s3://batliwalya --recursive --include "*"'
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+<-----Install Ansible on CentOS------>
+take two machine one master one slave
+*on master*
+sudo yum install epel-release -y
+sudo yum install ansible -y
+ansible --version
+sudo yum install openssh-server -y
+sudo systemctl status sshd
+sudo nano /etc/ssh/sshd_config
+passwordauthentication yes
+sudo systemctl status sshd
+
+*on slave*
+sudo yum install openssh-server -y
+sudo systemctl status sshd
+sudo nano /etc/ssh/sshd_config
+passwordauthentication yes
+sudo systemctl status sshd
+ssh-keygen
+sudo -i
+passwd <slave hostname>
+nano /etc/sudoers
+all line below root
+<slave hostname> ALL=(ALL)  NOPASSWD:ALL
+save & quit
+ip a
+copy ip
+
+*on master*
+sudo nano /etc/ansible/hosts
+add [server]
+<slave-ip>
+save & quit
+ssh-keygen
+ssh-copy-id <slavehostname>@<slave-ip>
+ansible -m ping all
+
+
+
+

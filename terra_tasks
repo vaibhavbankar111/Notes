@@ -27,3 +27,46 @@ variable "s3_bucket_names" {
 }
 ==============================================
 this will create 10 buckets in aws s3
+============================================
+code to create 5 ec2 instance in aws ec2 using terraform
+main.tf
+provider "aws" {
+  profile = "terraform-session"
+  region = "eu-north-1"
+}
+
+resource "aws_instance" "my-instance" {
+  count         = var.instance_count
+  ami           = lookup(var.ami,var.aws_region)
+  instance_type = var.instance_type
+
+  tags = {
+    Name  = "Terraform-${count.index + 1}"
+    Batch = "PK"
+  }
+}
+=================================================
+var.tf
+variable "ami" {
+  type = map
+
+  default = {
+    "eu-north-1" = "ami-0fd303abd14827300"
+    "eu-north-1" = "ami-06410fb0e71718398"
+  }
+}
+
+variable "instance_count" {
+  default = "5"
+}
+
+variable "instance_type" {
+  default = "t3.micro"
+}
+
+variable "aws_region" {
+  default = "eu-north-1"
+}
+====================================================
+this will create 5 ec2 machines
+==============================================

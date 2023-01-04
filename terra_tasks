@@ -70,3 +70,25 @@ variable "aws_region" {
 ====================================================
 this will create 5 ec2 machines
 ==============================================
+code to create 10 users in terraform
+main.tf
+provider "aws" {
+  profile = "terraform-session"
+  region = "eu-north-1"
+}
+
+resource "aws_iam_user" "users" {
+  count = length(var.iamusers)
+  name = var.iamusers[count.index]
+  
+}
+===========================================
+var.tf
+variable "iamusers" {
+    type = list(string)
+    default = [ "rica","pawan","vaibhav","mayur","anjali","rahul","ram","ravi","chaman","yudhistir" ]
+  
+}
+=========================================
+this will create 10 users
+

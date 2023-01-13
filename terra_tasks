@@ -428,7 +428,7 @@ resource "aws_instance" "my-instance" {
 }
 resource "aws_security_group" "sec_group" {
   name   = "sec_group"
-  vpc_id = "vpc-0c9b17c90202b1fb4"
+  vpc_id = data.aws_vpc.selected.id
   description = "Web Security Group for HTTP"
   dynamic "ingress" {
     for_each = [ 80,443,22,8080 ]
@@ -442,8 +442,8 @@ resource "aws_security_group" "sec_group" {
     } 
   }
 }
+
 ===========
-var.tf
 variable "ami" {
   type = map
 
@@ -458,4 +458,9 @@ variable "instance_type" {
 
 variable "aws_region" {
   default = "eu-north-1"
+}
+variable "vpc_id" {}
+
+data "aws_vpc" "selected" {
+  id = var.vpc_id
 }

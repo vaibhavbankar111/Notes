@@ -428,7 +428,7 @@ resource "aws_instance" "my-instance" {
 }
 resource "aws_security_group" "sec_group" {
   name   = "sec_group"
-  vpc_id = data.aws_vpc.selected.id
+  vpc_id = "vpc-025ba5b93ebe769da"
   description = "Web Security Group for HTTP"
   dynamic "ingress" {
     for_each = [ 80,443,22,8080 ]
@@ -442,6 +442,8 @@ resource "aws_security_group" "sec_group" {
     } 
   }
 }
+
+
 
 ===========
 variable "ami" {

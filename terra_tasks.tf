@@ -461,8 +461,3 @@ variable "instance_type" {
 variable "aws_region" {
   default = "eu-north-1"
 }
-variable "vpc_id" {}
-
-data "aws_vpc" "selected" {
-  id = var.vpc_id
-}

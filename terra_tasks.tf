@@ -561,5 +561,14 @@ variable "subnet_id" {
 variable "vpc_id" {
   type = string
 }
-	
+provider.tf
+provider "aws" {
+  profile = "terraform-session"
+  region = "eu-north-1"
+}
+dev.auto.tfvars
+instance_type = "t3.micro"
+key_name = "jenkins-key"
+subnet_id = "subnet-03c5614ddeebb349d"
+vpc_id = "vpc-025ba5b93ebe769da"
 

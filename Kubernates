@@ -1,0 +1,28 @@
+session 1 
+<<<Single node kubernate Clustor using minikube>> only use in developement or learning purpose not used in production
+======
+Install miniqube
+for windows > check systeminfo >> Hyper -v Requirements should be all yes
+download minikube for windows minikube-windows-amd64.exe
+install kubectl
+create folder in c drive with kubernates and paste downloaded minikube and kubectl
+copy path c:/kubernates
+advance system setting set environment varible user variable path and paste location
+done
+rename file in c:/kubernates minkube-windows-amd64.exe to minikube
+now run command minikube
+it will show the help menu
+
+minikube start >> it will create vm in which kubernate cluster will be setup
+done 
+kubernates are setup in vm 
+kubectl >> kubernates client which help to run commands or operations on kubernate clustor
+kubectl get pods >> it will show the pods running
+minikube ip >> it will show ip of our running minikube vm
+minikube ssh >> it will give ssh access
+minikube ssh username = docker
+minikube ssh password = tcuser
+how to provide dashboard to minikube >> minikube dashboard  command
+=======================================================================================
+
+

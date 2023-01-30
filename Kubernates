@@ -24,5 +24,75 @@ minikube ssh username = docker
 minikube ssh password = tcuser
 how to provide dashboard to minikube >> minikube dashboard  command
 =======================================================================================
+session2
+3-node kubernates clustor in vm
+we need kubernates master, k8 worker1, k8 worker2. 3 virtual machines
+all vm have at least 2 cpu 
+all vm are in same network should be able to ping each other
+go to vm file preferences>network>addnetwork>network name>ok
+vm node setting network selct from list
+check ip address of all vms and note down
+ssh all 3 vm in ubuntu or kali or wsl this node must be able to ping all 3 vms
+ssh username@ip enter then password
+every node must have swapoff
+to check free -h in all 3 nodes
+to disable or off swap > swapoff -a try as root user
+this is temporary to make it permananat we need to add in fstab
+vim /etc/fstab
+commet all lines start with swap in all nodes
+we need to install docker in all 3 nodes but note that we should check which version
+of docker is supported by k8s to check that follow k8s documentation
+install docker in all vms version 19.
+sudo cat /sys/class/dmi/id/product_uuid this should be unique in all node
+iptables for ubuntu 19.04 or later  
+*sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+
+*sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+*echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+*sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+
+do this in all nodes
+
+
+
+master setup using kubeadm
+
+kubeadm init --pod-network-cidr=10.244.0.0/16
+
+kubectl get nodes to show the nodes in my cluster 
+it will not work we need to enter commands to start our cluster
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernates/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(is -g) $HOME/.kube/config
+
+kubectl get nodes >> it will show our nodes in clustor
+
+get pods -A
+
+kubectl apply funnel networking 
+get pods -A
+
+kubeadm join wali command copy and paste in worker nodes
+
+kubectl get nodes on master to check all nodes are ready or not
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

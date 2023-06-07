@@ -83,7 +83,25 @@ kubectl get nodes on master to check all nodes are ready or not
 
 
 
+✔𝗣𝗼𝗱: A Pod is the smallest and most basic unit in Kubernetes. It represents a single instance of a running process or a set of tightly coupled processes running together on a node. Pods are scheduled and managed by Kubernetes.
 
+✔𝗖𝗹𝘂𝘀𝘁𝗲𝗿: A cluster is a collection of nodes that function as a single entity. It represents every element of the Kubernetes system, including the worker nodes and the control plane parts.
+
+✔𝗡𝗼𝗱𝗲: A Node is a Kubernetes cluster's worker computer. Either a real or virtual machine may be used. The operating and management of the pods is done by the nodes.
+
+✔𝗖𝗼𝗻𝘁𝗿𝗼𝗹-𝗣𝗹𝗮𝗻𝗲: The Kubernetes cluster is managed and controlled by a group of components known as the control plane. It contains the controller manager, scheduler, etcd, and API server.
+
+✔ 𝗲𝘁𝗰𝗱: Kubernetes uses the distributed key-value store etcd to store configuration and cluster data. For storing cluster state, it offers a dependable and highly accessible data store.
+
+✔𝗦𝗰𝗵𝗲𝗱𝘂𝗹𝗲𝗿: The Scheduler is in charge of allocating pods to nodes in accordance with resource needs, node availability, and other limitations. It selects the appropriate node for scheduling a pod.
+
+✔𝗖𝗼𝗻𝘁𝗿𝗼𝗹𝗹𝗲𝗿-𝗠𝗮𝗻𝗮𝗴𝗲𝗿: A group of controllers known as the Controller Manager which manages various cluster components. The Node Controller, Replication Controller, and Service Controller are a few examples. They make sure that the cluster's desired and actual states are same.
+
+✔𝗦𝗲𝗿𝘃𝗶𝗰𝗲: A logical set of pods and a policy for accessing them are defined by a service, which is an abstraction. For the pods behind it, it offers a reliable network endpoint (IP address) and load balancing.
+
+✔𝗥𝗲𝗽𝗹𝗶𝗰𝗮𝗦𝗲𝘁: ReplicaSets are Kubernetes objects that guarantee a certain number of pod replicas are active at all times. Scaling and managing the number of pods for a certain application are done using it.
+
+✔𝗡𝗮𝗺𝗲𝘀𝗽𝗮𝗰𝗲: The cluster resources can be split up into virtual clusters using namespaces. It gives names a range and enables many teams or projects to share the same physical cluster while isolating their resources.
 
 
 

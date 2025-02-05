@@ -102,6 +102,730 @@ kubectl get nodes on master to check all nodes are ready or not
 ✔𝗥𝗲𝗽𝗹𝗶𝗰𝗮𝗦𝗲𝘁: ReplicaSets are Kubernetes objects that guarantee a certain number of pod replicas are active at all times. Scaling and managing the number of pods for a certain application are done using it.
 
 ✔𝗡𝗮𝗺𝗲𝘀𝗽𝗮𝗰𝗲: The cluster resources can be split up into virtual clusters using namespaces. It gives names a range and enables many teams or projects to share the same physical cluster while isolating their resources.
+===========================================================================================================================
+
+Chatper=5
+
+🔹 Rolling Updates & Rollbacks in Kubernetes=>
+
+Kubernetes supports Rolling Updates to update applications with zero downtime and Rollbacks to revert changes if something goes wrong.
+🚀 Rolling Update
+
+A Rolling Update ensures that new versions of an application are deployed gradually, replacing old Pods one at a time to avoid downtime.
+✅ Steps of a Rolling Update:
+
+    Kubernetes starts a new Pod with the updated version.
+    It waits for the new Pod to become ready.
+    Once ready, it removes an old Pod.
+    This repeats until all old Pods are replaced.
+
+📌 Example: Deployment with Rolling Update
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1   # Max new pods above the desired count
+      maxUnavailable: 1  # Max old pods that can be unavailable during update
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-container
+        image: my-app:v1  # Initial version
+        ports:
+        - containerPort: 80
+
+🚀 How to Perform a Rolling Update?
+
+Update the image of the Deployment:
+
+kubectl set image deployment/my-app my-app-container=my-app:v2
+
+This triggers a Rolling Update to replace my-app:v1 with my-app:v2 gradually.
+📌 Check Update Status:
+
+kubectl rollout status deployment/my-app
+
+🔄 Rollback a Deployment
+
+If an update introduces issues, you can rollback to the previous version.
+✅ Steps of a Rollback:
+
+    Kubernetes stops the faulty Pods.
+    It restarts the previous working version.
+
+🚀 How to Perform a Rollback?
+
+Rollback to the last working version:
+
+kubectl rollout undo deployment/my-app
+
+Rollback to a specific revision:
+
+kubectl rollout undo deployment/my-app --to-revision=2
+
+📌 Check Deployment History:
+
+kubectl rollout history deployment/my-app
+
+
+ChatGPT
+🔄 Jump to a Specific Revision in a Rolling Update
+
+If a Kubernetes Rolling Update has multiple revisions and you need to roll back to a specific version, follow these steps:
+✅ Step 1: Check Deployment History
+
+kubectl rollout history deployment myapp-deployment
+
+This lists all the available revisions, showing metadata for each.
+
+Example Output:
+
+REVISION  CHANGE-CAUSE
+1         First deployment
+2         Updated image to v2
+3         Updated image to v3
+
+✅ Step 2: Roll Back to a Specific Revision
+
+Use the --to-revision flag:
+
+kubectl rollout undo deployment myapp-deployment --to-revision=2
+
+This will immediately revert the Deployment to revision 2.
+✅ Step 3: Verify the Rollback
+
+Check the status of the Deployment:
+
+kubectl rollout status deployment myapp-deployment
+
+Check the Pods to confirm they are running the correct version:
+
+kubectl get pods -l app=myapp
+
+===================================
+
+Configure Environment Variables in Applications =>
+
+
+🌍 Configuring Environment Variables in Applications in Kubernetes
+
+Kubernetes allows you to pass environment variables to Pods using different methods:
+
+    Using env in the Deployment YAML
+    Using ConfigMaps (for non-sensitive data)
+    Using Secrets (for sensitive data like passwords)
+
+✅ 1. Setting Environment Variables Directly in Deployment YAML
+
+You can specify environment variables inside the Deployment YAML using env:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        env:
+        - name: APP_ENV
+          value: "production"
+        - name: DEBUG_MODE
+          value: "false"
+
+🎯 How It Works
+
+    The app container gets APP_ENV=production and DEBUG_MODE=false.
+
+✅ 2. Using ConfigMap for Environment Variables
+
+A ConfigMap is used to store non-sensitive data like app configuration.
+📌 Step 1: Create a ConfigMap
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  APP_ENV: "production"
+  DEBUG_MODE: "false"
+
+📌 Step 2: Reference ConfigMap in Deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        envFrom:
+        - configMapRef:
+            name: my-config
+
+🎯 How It Works
+
+    The container gets all key-value pairs from my-config as environment variables.
+
+✅ 3. Using Secrets for Sensitive Data
+
+A Secret is used for storing sensitive information like passwords or API keys.
+📌 Step 1: Create a Secret
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+type: Opaque
+data:
+  DB_PASSWORD: cGFzc3dvcmQ=  # "password" (Base64 encoded)
+
+    ⚠ Note: Kubernetes requires values to be Base64-encoded.
+
+📌 Step 2: Reference Secret in Deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: DB_PASSWORD
+
+🎯 How It Works
+
+    The DB_PASSWORD is fetched from the Secret and injected into the container.
+
+🔥 Quick Commands for Applying Configurations
+
+kubectl apply -f configmap.yaml     # Apply ConfigMap
+kubectl apply -f secret.yaml        # Apply Secret
+kubectl apply -f deployment.yaml    # Apply Deployment
+
+kubectl get configmap my-config -o yaml  # View ConfigMap
+kubectl get secret my-secret -o yaml     # View Secret (Base64 encoded)
+
+======================================
+
+Configuring ConfigMaps in Applications=>
+
+📌 Configuring ConfigMaps in Kubernetes Applications
+
+A ConfigMap in Kubernetes is used to store non-sensitive configuration data as key-value pairs. This data can then be injected into Pods as environment variables, command-line arguments, or mounted files.
+🚀 1️⃣ Create a ConfigMap
+
+A ConfigMap can be created in three ways:
+
+    From a YAML file (Recommended)
+    From command-line arguments
+    From an existing file
+
+📌 1. Creating a ConfigMap using a YAML File
+
+Create a file called configmap.yaml:
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  APP_ENV: "production"
+  LOG_LEVEL: "debug"
+  MAX_RETRIES: "5"
+
+🔹 Apply the ConfigMap
+
+kubectl apply -f configmap.yaml
+
+Check if it’s created:
+
+kubectl get configmap my-config -o yaml
+
+📌 2. Creating a ConfigMap from CLI
+
+You can create a ConfigMap directly from the command line:
+
+kubectl create configmap my-config --from-literal=APP_ENV=production --from-literal=LOG_LEVEL=debug
+
+List all ConfigMaps:
+
+kubectl get configmaps
+
+📌 3. Creating a ConfigMap from a File
+
+If you have a configuration file (e.g., app-config.properties):
+
+kubectl create configmap my-config --from-file=app-config.properties
+
+This creates key-value pairs where the file name is the key and the content is the value.
+🚀 2️⃣ Using ConfigMaps in Applications
+
+Once a ConfigMap is created, you can use it in Pods in three ways:
+
+    As environment variables
+    As command-line arguments
+    As mounted files
+
+📌 1. Use ConfigMap as Environment Variables
+
+Modify your Deployment YAML:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        envFrom:
+        - configMapRef:
+            name: my-config  # Load all key-value pairs as environment variables
+
+🎯 How It Works
+
+    The container gets all key-value pairs from my-config as environment variables.
+
+To check inside the Pod:
+
+kubectl exec -it <pod-name> -- env | grep APP_ENV
+
+📌 2. Use ConfigMap as a Single Environment Variable
+
+Instead of loading all keys, you can use a specific key from the ConfigMap:
+
+        env:
+        - name: APP_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: my-config
+              key: APP_ENV
+
+🎯 How It Works
+
+    Injects only APP_ENV from my-config.
+
+📌 3. Use ConfigMap as a Mounted File
+
+You can mount a ConfigMap into a Pod’s filesystem.
+
+Modify your Deployment YAML:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config   # Mount the ConfigMap here
+      volumes:
+      - name: config-volume
+        configMap:
+          name: my-config
+
+🎯 How It Works
+
+    Mounts the ConfigMap as files inside the container at /etc/config/.
+    Each key in the ConfigMap becomes a file with its value as content.
+
+To check inside the Pod:
+
+kubectl exec -it <pod-name> -- cat /etc/config/APP_ENV
+================================================
+
+ Configure Secrets in Applications=>
+
+🔐 Configuring Secrets in Kubernetes Applications
+
+Kubernetes Secrets store and manage sensitive information like passwords, API keys, and database credentials securely.
+🔹 1️⃣ Creating a Secret
+
+You can create Secrets in three ways:
+
+    From a YAML file (Recommended)
+    From command-line arguments
+    From an existing file
+
+📌 1. Create a Secret using a YAML File
+
+Create a file called secret.yaml:
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+type: Opaque
+data:
+  DB_USER: dXNlcm5hbWU=    # Base64 encoded "username"
+  DB_PASSWORD: cGFzc3dvcmQ=  # Base64 encoded "password"
+
+    ⚠ Kubernetes requires values to be Base64-encoded.
+    You can encode values using:
+
+echo -n "username" | base64
+
+✅ Apply the Secret
+
+kubectl apply -f secret.yaml
+
+Verify it:
+
+kubectl get secret my-secret -o yaml
+
+    🛑 Values are Base64-encoded, not encrypted.
+
+📌 2. Create a Secret from CLI
+
+kubectl create secret generic my-secret \
+  --from-literal=DB_USER=username \
+  --from-literal=DB_PASSWORD=password
+
+List all Secrets:
+🔐 Configuring Secrets in Kubernetes Applications
+
+Kubernetes Secrets store and manage sensitive information like passwords, API keys, and database credentials securely.
+🔹 1️⃣ Creating a Secret
+
+You can create Secrets in three ways:
+
+    From a YAML file (Recommended)
+    From command-line arguments
+    From an existing file
+
+📌 1. Create a Secret using a YAML File
+
+Create a file called secret.yaml:
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+type: Opaque
+data:
+  DB_USER: dXNlcm5hbWU=    # Base64 encoded "username"
+  DB_PASSWORD: cGFzc3dvcmQ=  # Base64 encoded "password"
+
+    ⚠ Kubernetes requires values to be Base64-encoded.
+    You can encode values using:
+
+echo -n "username" | base64
+
+✅ Apply the Secret
+
+kubectl apply -f secret.yaml
+
+Verify it:
+
+kubectl get secret my-secret -o yaml
+
+    🛑 Values are Base64-encoded, not encrypted.
+
+📌 2. Create a Secret from CLI
+
+kubectl create secret generic my-secret \
+  --from-literal=DB_USER=username \
+  --from-literal=DB_PASSWORD=password
+
+List all Secrets:
+
+kubectl get secrets
+
+📌 3. Create a Secret from a File
+
+If you have a file (e.g., db-creds.txt):
+
+kubectl create secret generic my-secret --from-file=db-creds.txt
+
+🚀 2️⃣ Using Secrets in Applications
+
+Secrets can be injected into Pods in three ways:
+
+    As environment variables
+    As mounted files
+    As command-line arguments
+
+📌 1. Use Secret as Environment Variables
+
+Modify your Deployment YAML:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: DB_PASSWORD
+
+🎯 How It Works
+
+    Injects DB_USER and DB_PASSWORD from my-secret into the container.
+
+To check inside the Pod:
+
+kubectl exec -it <pod-name> -- env | grep DB_
+
+📌 2. Use Secret as a Mounted File
+
+Modify your Deployment YAML:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        volumeMounts:
+        - name: secret-volume
+          mountPath: "/etc/secrets"
+          readOnly: true
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: my-secret
+
+🎯 How It Works
+
+    Mounts my-secret as files inside the container at /etc/secrets/.
+    Each key in the Secret becomes a file, with its value as content.
+
+To check inside the Pod:
+
+kubectl exec -it <pod-name> -- cat /etc/secrets/DB_USER
+
+📌 3. Use Secret as a Command-Line Argument
+
+Modify your Deployment YAML:
+
+    args: [ "--db-user=$(DB_USER)", "--db-pass=$(DB_PASSWORD)" ]
+    env:
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: my-secret
+          key: DB_USER
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: my-secret
+          key: DB_PASSWORD
+
+kubectl get secrets
+
+📌 3. Create a Secret from a File
+
+If you have a file (e.g., db-creds.txt):
+
+kubectl create secret generic my-secret --from-file=db-creds.txt
+
+🚀 2️⃣ Using Secrets in Applications
+
+Secrets can be injected into Pods in three ways:
+
+    As environment variables
+    As mounted files
+    As command-line arguments
+
+📌 1. Use Secret as Environment Variables
+
+Modify your Deployment YAML:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: DB_PASSWORD
+
+🎯 How It Works
+
+    Injects DB_USER and DB_PASSWORD from my-secret into the container.
+
+To check inside the Pod:
+
+kubectl exec -it <pod-name> -- env | grep DB_
+
+📌 2. Use Secret as a Mounted File
+
+Modify your Deployment YAML:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:latest
+        volumeMounts:
+        - name: secret-volume
+          mountPath: "/etc/secrets"
+          readOnly: true
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: my-secret
+
+🎯 How It Works
+
+    Mounts my-secret as files inside the container at /etc/secrets/.
+    Each key in the Secret becomes a file, with its value as content.
+
+To check inside the Pod:
+
+kubectl exec -it <pod-name> -- cat /etc/secrets/DB_USER
+
+📌 3. Use Secret as a Command-Line Argument
+
+Modify your Deployment YAML:
+
+    args: [ "--db-user=$(DB_USER)", "--db-pass=$(DB_PASSWORD)" ]
+    env:
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: my-secret
+          key: DB_USER
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: my-secret
+          key: DB_PASSWORD
+=================================================================================================================================================
+chapter=6
+
+
 
 
 

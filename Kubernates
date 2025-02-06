@@ -104,7 +104,7 @@ kubectl get nodes on master to check all nodes are ready or not
 ✔𝗡𝗮𝗺𝗲𝘀𝗽𝗮𝗰𝗲: The cluster resources can be split up into virtual clusters using namespaces. It gives names a range and enables many teams or projects to share the same physical cluster while isolating their resources.
 ===========================================================================================================================
 
-Chatper=5
+Chatper=5 (Application LifeCycle Management)
 
 🔹 Rolling Updates & Rollbacks in Kubernetes=>
 
@@ -823,7 +823,7 @@ Modify your Deployment YAML:
           name: my-secret
           key: DB_PASSWORD
 =================================================================================================================================================
-chapter=6
+chapter=6 (Cluster Maintenance)
 
 OS Upgrades=>
 
@@ -1192,7 +1192,12 @@ For managed Kubernetes services, use cloud-native backup tools:
     Azure AKS: Azure Backup, Velero, CSI snapshots
     Google GKE: GKE Backup, Cloud Storage snapshots
 
-============================================
+============================================================================================================================================
+Chapter=> 7 (Security)
+
+
+
+
 
 
 

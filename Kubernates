@@ -104,6 +104,68 @@ kubectl get nodes on master to check all nodes are ready or not
 ✔𝗡𝗮𝗺𝗲𝘀𝗽𝗮𝗰𝗲: The cluster resources can be split up into virtual clusters using namespaces. It gives names a range and enables many teams or projects to share the same physical cluster while isolating their resources.
 ===========================================================================================================================
 
+Chapter=4 (Logging & Monitoring)
+
+Metrics Server=>
+
+To set up a metrics server in a Kubernetes (K8s) cluster, you can follow these steps. The metrics server collects resource usage data (such as CPU and memory) from the K8s nodes and pods, which is essential for monitoring, autoscaling, and other performance-related operations.
+
+1. Install Metrics Server
+You can install the Metrics Server in your Kubernetes cluster by deploying it via a YAML file. The official Metrics Server is available as a Helm chart or can be applied using a manifest from the Kubernetes repository.
+
+Using the Official Kubernetes Metrics Server Deployment:
+Run the following command to apply the Metrics Server deployment:
+
+bash
+Copy
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.1/components.yaml
+This will install the Metrics Server into the kube-system namespace.
+
+2. Verify the Installation
+Once the installation is complete, you can check the status of the Metrics Server by running:
+
+bash
+Copy
+kubectl get deployment metrics-server -n kube-system
+You should see the metrics-server deployment running.
+
+3. Check Metrics
+Once the Metrics Server is running, you can use the following commands to see the metrics:
+
+To get the node metrics (e.g., CPU and memory usage of each node):
+
+bash
+Copy
+kubectl top nodes
+To get the pod metrics (e.g., CPU and memory usage of each pod):
+
+bash
+Copy
+kubectl top pods
+4. Troubleshooting Metrics Server Issues
+If you encounter issues where metrics are not appearing or the Metrics Server is not showing the expected data, try the following:
+
+Check Metrics Server logs to identify potential issues:
+
+bash
+Copy
+kubectl logs -n kube-system deployment/metrics-server
+Ensure your API Aggregation Layer is enabled. Metrics Server relies on this component for accessing the metrics API.
+
+Ensure that your K8s nodes allow metrics collection. For example, if you're running on a cloud provider or custom infrastructure, ensure the Kubelet is configured with the correct --read-only-port flag.
+
+5. Use the Metrics Server for Autoscaling
+Once the Metrics Server is installed and working, you can use it for Horizontal Pod Autoscaling (HPA). For example, you can scale your application based on CPU usage:
+
+First, create an HPA object:
+
+bash
+Copy
+kubectl autoscale deployment <deployment-name> --cpu-percent=50 --min=1 --max=10
+This will scale your deployment between 1 and 10 replicas based on CPU usage, aiming to maintain an average CPU usage of 50%.
+
+
+============================================================================================================================
 Chatper=5 (Application LifeCycle Management)
 
 🔹 Rolling Updates & Rollbacks in Kubernetes=>
